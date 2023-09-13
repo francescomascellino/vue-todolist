@@ -39,11 +39,14 @@
                             <!-- COSI' CICLA LI E INSERISCE {{task}} AL SUO INTERNO -->
 
                             <li
-                                class="list-group-item d-flex justify-content-between"
+                                class="list-group-item d-flex"
                                 v-for="(task, index) in tasks">
 
                                 <!-- CLICCANDO SUL TESTO LA PROPRIETA' DONE CAMBIA VALORE E IL TESTO VIENE SBARRATO -->
-                                <span
+                                <input class="form-check-input me-2"
+                                    type="checkbox"
+                                    @click="task.done = !task.done">
+                                <span class="flex-grow-1"
                                     :style='task.done ? "text-decoration: line-through" : " "  '
                                     @click="task.done = !task.done">
                                     {{task.text}}
