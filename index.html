@@ -23,6 +23,49 @@
 
         <div id="app">
 
+            <div class="container">
+                <div class="row justify-content-center mt-3">
+                    <div class="col">
+                        <ul class="list-group my-3" v-if="tasks.length > 0">
+
+                            <!-- COSI' CICLA LI E INSERISCE {{task}} AL SUO INTERNO -->
+                            <li
+                                class="list-group-item d-flex justify-content-between"
+                                v-for="(task, index) in tasks">
+                                {{task.text}} - DONE: {{task.done}} (debug)
+                                <!-- @click="removeTask(index)" ESEGUE removeTask(index) AL CLICK PRENDENDO IL PARAMETRO index DALLA DIRETTIVA v-for-->
+                                <i class="fa-solid fa-circle-minus text-danger"
+                                    @click="removeTask(index)"></i>
+                            </li>
+
+                        </ul>
+
+                        <!-- //SE tasks E' VUOTO VISUALIZZA QUESTO H2 -->
+                        <h2 v-else>Non ci sono task</h2>
+
+                        <div class="input-group my-3">
+
+                            <!-- v-on:keyup.enter="addTask()" ESEGUE addTask() QUANDO ENTER VIENE RILASCIATO -->
+                            <input type="text" v-model="newTask"
+                                v-on:keyup.enter="addTask()"
+                                placeholder="Inserisci un nuovo task"
+                                class="form-control">
+
+                            <!-- @click="addTask()" ESEGUE addTask() AL CLICK -->
+                            <button class="btn btn-outline-secondary"
+                                type="button" @click="addTask()">Aggiungi</button>
+
+                        </div>
+
+                        <!-- v-if CONTROLLA SE taskCheck E' TRUE. SE LO E' RENDERIZZA IL MESSAGGIO. -->
+                        <h3 class="text-danger text-center mt-2"
+                            v-if="taskCheck">Attenzione,
+                            non puoi inserire un task vuoto!</h3>
+                    </div>
+
+                </div>
+            </div>
+
         </div>
 
         <!-- VUE.JS 3 (OPTIONS) CDN -->
