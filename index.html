@@ -18,6 +18,14 @@
             integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
             crossorigin="anonymous" referrerpolicy="no-referrer">
 
+        <style>
+
+                span {
+                    cursor: pointer;                    
+                }
+
+        </style>
+
     </head>
     <body>
 
@@ -29,10 +37,18 @@
                         <ul class="list-group my-3" v-if="tasks.length > 0">
 
                             <!-- COSI' CICLA LI E INSERISCE {{task}} AL SUO INTERNO -->
+
                             <li
                                 class="list-group-item d-flex justify-content-between"
                                 v-for="(task, index) in tasks">
-                                {{task.text}} - DONE: {{task.done}} (debug)
+
+                                <!-- CLICCANDO SUL TESTO LA PROPRIETA' DONE CAMBIA VALORE E IL TESTO VIENE SBARRATO -->
+                                <span
+                                    :style='task.done ? "text-decoration: line-through" : " "  '
+                                    @click="task.done = !task.done">
+                                    {{task.text}}
+                                </span>
+
                                 <!-- @click="removeTask(index)" ESEGUE removeTask(index) AL CLICK PRENDENDO IL PARAMETRO index DALLA DIRETTIVA v-for-->
                                 <i class="fa-solid fa-circle-minus text-danger"
                                     @click="removeTask(index)"></i>
