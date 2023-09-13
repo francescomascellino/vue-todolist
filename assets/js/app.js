@@ -20,9 +20,9 @@ createApp({
     data() {
         return {
 
+            // CONTROLLA SE L'IMPUT BINDATO A taskInput E' PIENO O VUOTO
             taskInput: "",
 
-            // CONTROLLA SE L'IMPUT BINDATO A taskInput E' PIENO O VUOTO
             taskCheck: false,
 
             tasks: [
