@@ -33,19 +33,21 @@
 
             <div class="container">
                 <div class="row justify-content-center mt-3">
-                    <div class="col">
+                    <div class="col card">
                         <ul class="list-group my-3" v-if="tasks.length > 0">
 
                             <li
                                 class="list-group-item d-flex"
                                 v-for="(task, index) in tasks">
 
-                                <!-- //IL CHECKBOX FUNZIONA COME LO SPAN SEGUENTE, MA ANCHE L'ATTRIBUTO CHECKED E' BINDATO AL VALORE DI task.done -->
+                                <!-- IL CHECKBOX FUNZIONA COME LO SPAN SEGUENTE, MA ANCHE L'ATTRIBUTO CHECKED E' BINDATO AL VALORE DI task.done -->
                                 <input class="form-check-input me-2"
                                     type="checkbox"
                                     @click="task.done = !task.done"
                                     :checked="task.done">
+
                                 <!-- CLICCANDO SUL TESTO LA PROPRIETA' DONE CAMBIA VALORE E IL TESTO VIENE SBARRATO -->
+                                <!-- OPPURE :class="{'text-decoration-line-through': task.done}" -->
                                 <span class="flex-grow-1"
                                     :style='task.done ? "text-decoration: line-through" : " "  '
                                     @click="task.done = !task.done">
@@ -55,12 +57,13 @@
                                 <!-- @click="removeTask(index)" ESEGUE removeTask(index) AL CLICK PRENDENDO IL PARAMETRO index DALLA DIRETTIVA v-for-->
                                 <i class="fa-solid fa-circle-minus text-danger"
                                     @click="removeTask(index)"></i>
+
                             </li>
 
                         </ul>
 
-                        <!-- //SE tasks E' VUOTO VISUALIZZA QUESTO H2 -->
-                        <h2 v-else class="text-center">La tua To-Do List è
+                        <!-- SE tasks E' VUOTO VISUALIZZA QUESTO H2 -->
+                        <h2 v-else class="text-center mt-3">La tua To-Do List è
                             vuota!</h2>
 
                         <div class="input-group my-3">
@@ -78,9 +81,10 @@
                         </div>
 
                         <!-- v-if CONTROLLA SE taskCheck E' TRUE. SE LO E' RENDERIZZA IL MESSAGGIO. -->
-                        <h3 class="text-danger text-center mt-2"
+                        <h3 class="text-danger text-center mb-3"
                             v-if="taskCheck">Attenzione,
                             non puoi inserire un task vuoto!</h3>
+
                     </div>
 
                 </div>

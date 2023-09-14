@@ -57,6 +57,13 @@ createApp({
 
     methods: {
 
+        // ES5 syntax
+        // methodName: function() {},
+
+        // ES6 synthax
+        // methodNameEs6: () => {},
+        // methodNameEs62() {},
+
         addTask() {
 
             //AL CLICK DEL BOTTONE CONTROLLO SE L'IMPUT NON E' UNA STRINGA VUOTA
